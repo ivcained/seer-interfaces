@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Futarchy · Seer / Common Ground</title><meta name="description" content="Compare a success metric under two proposal conditions. Conditional market forecasts inform the DAO; the vote stays human."><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="preload" as="font" type="font/woff2" href="/assets/public-sans.woff2" crossorigin><link rel="stylesheet" href="/assets/style.css"><script>try{var t=localStorage.getItem('seer-theme');if(t!=='seer'&&t!=='ultra'&&t!=='light')t='seer';document.documentElement.dataset.theme=t;document.documentElement.dataset.shade=t==='light'?'light':'dark'}catch(e){}</script><script src="/assets/theme.js" defer></script><script src="/assets/futarchy.js" defer></script><script src="/assets/state.js" defer></script></head><body><a class="skip" href="#main">Skip to content</a><div class="wrap"><header class="header"><a class="brand" href="/"><img class="mark light" src="/assets/ef-mark-ink.svg" alt=""><img class="mark dark" src="/assets/ef-mark-dark.svg" alt="" aria-hidden="true"><img class="wordmark light" src="/assets/ef-wordmark.svg" alt="Seer"><img class="wordmark dark" src="/assets/ef-wordmark-dark.svg" alt="Seer"></a><nav aria-label="Main navigation"><a href="/">Protocol home</a><a class="btn ghost" href="/#ecosystem">The ecosystem <span aria-hidden="true">↗</span></a><button class="btn ghost theme-toggle" type="button" aria-label="Switch to dark theme" aria-describedby="theme-tip"><span class="theme-glyph" aria-hidden="true">☾</span><span class="theme-tip" role="tooltip" id="theme-tip">Switch to dark theme</span></button></nav></header><nav class="product-nav" aria-label="Applications"><a href="/app/">Explore</a><a href="/deep/">Deep</a><a href="/futarchy/" aria-current="page">Futarchy</a><a href="/opportunity/">Opportunity</a><a href="/risk/">Risk pricing</a></nav>
+<main id="main">
+<section class="app-title"><div><h1>Two futures.<br>One decision.</h1><p>Markets price the same success metric under opposite conditions. Your DAO still casts the vote.</p></div>
+<div class="demo" role="note"><strong>Illustrative demo data</strong><p>Fictional proposals and sDAI prices modeled on futarchy.seer.pm. No wallet connection.</p></div></section>
+<div class="workspace">
+<section aria-label="Proposals">
+<div class="chips" role="group" aria-label="Filter by organization"><button class="chip" type="button" data-org="all" aria-pressed="true">All · 4</button><button class="chip" type="button" data-org="gnosis" aria-pressed="false">Gnosis</button><button class="chip" type="button" data-org="kleros" aria-pressed="false">Kleros</button></div>
+<div class="table-scroll" role="region" aria-label="Proposal forecasts; scroll horizontally if needed" tabindex="0">
+<table><caption class="sr-only">Fictional governance proposals with conditional market impact forecasts</caption>
+<thead><tr><th scope="col">Proposal / organization</th><th scope="col">State</th><th scope="col" class="numeric">Impact estimate</th></tr></thead>
+<tbody id="proposals">
+<tr data-proposal="gip153" data-org="gnosis" class="selected-row"><td><button class="market-link" type="button" aria-pressed="true">What will the impact on GNO price be if GIP-153 is passed?</button><small>Gnosis · GNO price per token</small></td><td><span class="badge badge-active">Active</span></td><td class="numeric" data-ui-number>+9.44%</td></tr>
+<tr data-proposal="kipfees" data-org="kleros"><td><button class="market-link" type="button" aria-pressed="false">What will the impact on PNK price be if the court-fees update is approved?</button><small>Kleros · PNK price per token</small></td><td><span class="badge badge-active">Active</span></td><td class="numeric" data-ui-number>+5.00%</td></tr>
+<tr data-proposal="gip152" data-org="gnosis"><td><button class="market-link" type="button" aria-pressed="false">What will the impact on GNO price be if GIP-152 is passed?</button><small>Gnosis · GNO price per token</small></td><td><span class="badge badge-ended">Closed</span></td><td class="numeric" data-ui-number>+2.22%</td></tr>
+<tr data-proposal="kip81" data-org="kleros"><td><button class="market-link" type="button" aria-pressed="false">What will be the price of PNK if KIP-81 is approved?</button><small>Kleros · resolved: not approved</small></td><td><span class="badge badge-resolved">Resolved · No</span></td><td class="numeric" data-ui-number>+55.55%</td></tr>
+</tbody></table></div><div class="empty" id="empty" hidden><h2>No matching proposals.</h2><p>Try another organization filter.</p><button class="btn" type="button" id="reset-empty">Clear filters</button></div>
+<p class="table-note">Impact compares the same metric under two conditions. It is not the probability that a proposal passes, and not a return on any token.</p>
+</section>
+<aside class="evidence" aria-labelledby="f-title">
+<p class="label">SELECTED PROPOSAL</p>
+<h2 id="f-title">GNO price if GIP-153 passes</h2>
+<p id="f-state"><span class="badge badge-active">Active</span></p>
+<dl class="basis"><dt>Metric</dt><dd id="f-metric">GNO price per token in sDAI, measured over the evaluation window after execution.</dd><dt>Resolves against</dt><dd id="f-resolves">Time-weighted average price of each conditional market, settled on Seer.</dd><dt>Who decides</dt><dd>GnosisDAO voters. The markets inform the decision; they do not execute it.</dd></dl>
+<p class="safety" id="f-note">Illustrative prices. No governance action is taken from this page.</p>
+<span class="sr-only" role="status" id="f-status"></span>
+</aside></div>
+<section aria-label="Paired conditional forecasts" style="padding-bottom:56px"><p class="table-note" style="margin:0 0 4px">Both rows price the <strong>same metric</strong> on a shared scale. They price a future metric under two opposite conditions — <strong>not</strong> the chance the proposal passes.</p>
+<div class="pair-bars" id="f-pair">
+<div class="bar-row"><span class="cond">If it passes</span><div class="track" role="img" aria-hidden="true"><i id="f-yes-bar" style="width:0%"></i></div><p class="val"><span id="f-yes" data-ui-number>104.20</span> <small class="unit">sDAI per GNO</small></p></div>
+<div class="bar-row"><span class="cond">If it does not</span><div class="track" role="img" aria-hidden="true"><i id="f-no-bar" style="width:0%"></i></div><p class="val"><span id="f-no" data-ui-number>95.21</span> <small class="unit">sDAI per GNO</small></p></div>
+<div class="axis"><span>0</span><span id="f-axis-max" data-ui-number>120</span></div>
+</div>
+<div class="impact-band"><div><span class="imp" id="f-impact" data-ui-number>+9.44%</span><small>Market-implied impact</small></div><p class="small" style="max-width:44ch">Impact = (if it passes − if it does not) ÷ if it does not. A forecast, not a voting recommendation.</p></div>
+</section>
+<aside class="preview-note"><div><strong>What to try</strong><p>Switch proposals, filter by organization, and compare the paired forecasts. KIP-81 shows a resolved market: the update was not approved, and its impact line is the measured outcome.</p></div><a class="btn" href="/">Back to the protocol</a></aside>
+</main>
+<footer class="footer"><span>Seer / Common Ground · Independent design proposal for the Seer rebrand</span><span>Conditional forecasts inform governance; they do not decide it.</span><span>Illustrative demo data</span></footer></div></body></html>
