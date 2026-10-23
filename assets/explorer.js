@@ -410,6 +410,30 @@ let railResume=null;
 ['pointerleave','focusout'].forEach(ev=>rail.addEventListener(ev,()=>{clearTimeout(railResume);railResume=setTimeout(()=>railPaused=false,2000);}));
 function drift(){if(!railPaused&&!railMotion.matches){rail.scrollLeft+=0.5;if(rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-2)rail.scrollLeft=0;}requestAnimationFrame(drift);}
 requestAnimationFrame(drift);
+// ===== EXPLORER ACTIVITY TAPE =====
+(function(){
+ const el=$('explorer-tape');if(!el)return;
+ const SHORT={aurora:'Aurora',grant:'Grant round',contributors:'Contributors',lumen:'Lumen',vault:'Vault',rubric:'Rubric'};
+ const WHENS=['2m ago','5m ago','9m ago','14m ago','18m ago','26m ago'];
+ const mk=(i)=>{
+  const keys=Object.keys(SHORT);
+  const k=keys[Math.floor(Math.random()*keys.length)];
+  const book=books[k]||books.aurora;
+  const bi=Math.floor(Math.random()*book.length);
+  const price=Math.min(96,Math.max(4,book[bi][1]*100+(Math.random()*4-2)));
+  return {k,side:book[bi][0],shares:Math.round(6+Math.random()*110),price,when:WHENS[i]||'just now'};
+ };
+ const XT=[];
+ for(let i=0;i<4;i++)XT.push(mk(i));
+ function render(){
+  el.innerHTML=XT.map(t=>`<li><span class="tape-mkt">${SHORT[t.k]}</span><span class="tape-side ${/yes|meridian|over|pass/i.test(t.side)?'up':'down'}">${esc(t.side)}</span><span data-ui-number>${t.shares} shares @ ${t.price.toFixed(1)}\u00a2</span><span class="tape-when">${t.when}</span></li>`).join('');
+ }
+ render();
+ setInterval(()=>{
+  if(document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  XT.unshift(mk(0));if(XT.length>4)XT.pop();render();
+ },3500);
+})();
 // ===== SEER CANVAS CHART + LIVE TAPE =====
 let chart=null,currentTf='7d',tapeTimer=null;
 const TF_AGO={'7d':'7 days ago','30d':'30 days ago','90d':'90 days ago'};
