@@ -267,9 +267,3 @@ html[data-shade="dark"] #palette-list button.selected{background:var(--tint)}
 .explorer-tape{margin-top:20px}
 .explorer-tape .tape-mkt{font-weight:600;color:var(--ink)}
 
-/* hero flow-field background — ambient, behind content, never interactive.
-   Never override the mark stage's positioning: it anchors itself. */
-.hero{position:relative;overflow:hidden}
-.hero-field{position:absolute;inset:0;z-index:0;pointer-events:none}
-.hero > div:not(.hero-mark-stage):not(.hero-field){position:relative;z-index:1}
-.hero-mark-stage{z-index:1}
