@@ -283,3 +283,7 @@ html[data-shade="dark"] #palette-list button.selected{background:var(--tint)}
 .process-list li{transition:transform .35s var(--ease)}
 .process-list li:hover{transform:translateY(-4px)}
 @media (prefers-reduced-motion:reduce){.hero .kicker,.hero h1,.hero .intro,.hero .actions,.hero .principle,.hero-mark-stage{animation:none}.hero .actions .btn,.hero .actions .arrow,.process-list li{transition:none}.ecosystem .eco-item{opacity:1;transform:none;transition:none}.hero-mark-stage{filter:none}}
+
+/* Carousel affordance: cards fade out at the rail edges instead of clipping abruptly. */
+.rail{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 40px,#000 calc(100% - 72px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 40px,#000 calc(100% - 72px),transparent 100%)}
+@media(max-width:520px){.rail{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 20px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 20px,#000 calc(100% - 48px),transparent 100%)}}
